@@ -1,18 +1,29 @@
-# nvatlas-test
-A test website of NV Atlas.
+# NV Atlas: Nominal → Verbal
 
-## Description
-This is a *test website* being used in the TT class.
-Created on **5 November, 2026**.
+A bilingual corpus explorer for 500 English–Chinese sentence pairs. The project examines how English nominal key terms are rendered as Chinese verbs in subtitle data.
 
-### 3 level title
-We don't write `Python` programs anymore.
-maybe we do.
+## Live site
 
+https://vanessalvts.github.io/nvatlas-test/
 
+## Pages
 
-Table: 
-| Syntax | Description |
-|--------|-------------|
-| Header | Text        |
-|Paragraph | Text      |
+- `index.html` — search, category and verification filters, linked network, treemap, heat map, data table, and filtered CSV export
+- `report.html` — learning report and AI use declaration
+- `method.html` — method notes, data dictionary, codebook, and quality checks
+
+## Data
+
+- `NVAtlas-AI-Agent.csv` — original supplied data, preserved unchanged
+- `data/corpus.json` — enriched browser data with required analysis fields
+- `data/corpus.csv` — enriched CSV version
+
+The supplied file does not yet document its external corpus URL, sampling seed, or candidate pool. All entries remain `human_checked = no` pending the required human verification against the original source.
+
+## Run locally
+
+```bash
+python3 -m http.server 8765
+```
+
+Then open `http://localhost:8765/`.

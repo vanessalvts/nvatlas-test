@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" data-page="home">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NV Atlas | Nominal to Verbal</title>
+<meta name="description" content="A bilingual corpus explorer of English nominal terms and their Chinese verbal renderings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%2316211d%22/%3E%3Ctext x=%2232%22 y=%2241%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2222%22 fill=%22%23f5f3ed%22%3ENV%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">NV</span><span>NV Atlas <small>Nominal → Verbal</small></span></a>
+  <nav aria-label="Main navigation">
+    <a href="index.html" data-i18n="navExplore">Explore</a>
+    <a href="report.html" data-i18n="navReport">Learning report</a>
+    <a href="method.html" data-i18n="navMethod">Method & codebook</a>
+    <div class="lang-switch" role="group" aria-label="Language"><button data-lang="en" class="active">EN</button><button data-lang="zh">繁</button></div>
+  </nav>
+</header>
+<main id="main">
+  <section class="hero shell">
+    <div class="eyebrow"><span class="signal"></span><span data-i18n="projectTag">2026R1 Translation Technology</span></div>
+    <div class="hero-grid">
+      <div>
+        <h1><span data-i18n="heroTitleA">When nouns</span><br><em data-i18n="heroTitleB">become verbs.</em></h1>
+        <p class="lede" data-i18n="heroText">A 500-entry corpus exploring how English nominal vocabulary is rendered as action in Chinese subtitles.</p>
+        <div class="hero-actions"><a class="button primary" href="#explore" data-i18n="startExploring">Explore the corpus</a><a class="text-link" href="report.html" data-i18n="readReport">Read the report <span>↗</span></a></div>
+      </div>
+      <aside class="hero-note">
+        <div class="note-top"><span data-i18n="researchQuestion">Research question</span><span class="note-index">01</span></div>
+        <p data-i18n="questionText">Which nominal forms are most often realised as Chinese verbs, and how much variation lies beneath those choices?</p>
+        <div class="stat-row"><div><strong>500</strong><span data-i18n="entries">entries</span></div><div><strong>195</strong><span data-i18n="terms">terms</span></div><div><strong>282</strong><span data-i18n="renderings">renderings</span></div></div>
+      </aside>
+    </div>
+  </section>
+  <section class="shell explorer" id="explore">
+    <div class="section-head">
+      <div><span class="kicker" data-i18n="corpusExplorer">Corpus explorer</span><h2 data-i18n="searchAndSee">Search the evidence. See the pattern.</h2></div>
+      <p data-i18n="explorerIntro">Every view below responds to the same search and category filters. Select any term or row to inspect its sentence pair.</p>
+    </div>
+    <div class="controls panel">
+      <label class="search-field"><span class="sr-only" data-i18n="search">Search</span><span class="search-icon">⌕</span><input id="search" type="search" placeholder="Search English, Chinese, or key term…" data-i18n-placeholder="searchPlaceholder"></label>
+      <div class="control-group"><span data-i18n="category">Category</span><select id="category"><option value="all" data-i18n="allCategories">All categories</option><option value="action" data-i18n="catAction">Action nominalisation</option><option value="result" data-i18n="catResult">Result nominalisation</option><option value="state" data-i18n="catState">State / quality nominalisation</option></select></div>
+      <div class="control-group"><span data-i18n="verification">Verification</span><select id="checked"><option value="all" data-i18n="allEntries">All entries</option><option value="yes" data-i18n="checkedYes">Human checked</option><option value="no" data-i18n="checkedNo">Awaiting check</option></select></div>
+      <button class="button ghost" id="reset" data-i18n="reset">Reset</button>
+    </div>
+    <div class="result-line"><span><strong id="resultCount">500</strong> <span data-i18n="entriesFound">entries in view</span></span><span id="activeFilters" class="active-filters"></span></div>
+    <div class="viz-grid">
+      <article class="viz-card wide">
+        <header><div><span class="card-label" data-i18n="networkLabel">01 · Relational</span><h3 data-i18n="networkTitle">Term → verbal rendering network</h3></div><p data-i18n="networkDesc">English nominals radiate toward their Chinese verbal renderings. Thicker links mean repeated pairs.</p></header>
+        <div id="network" class="viz-body network" aria-label="Interactive term translation network"></div>
+        <div class="viz-help"><span data-i18n="networkTip">Click a node to filter the corpus.</span><span id="networkMeta"></span></div>
+      </article>
+      <article class="viz-card">
+        <header><div><span class="card-label" data-i18n="hierarchyLabel">02 · Hierarchical</span><h3 data-i18n="treeTitle">Nominalisation profile</h3></div></header>
+        <div id="treemap" class="viz-body" aria-label="Treemap of nominalisation categories"></div>
+        <div class="viz-help"><span data-i18n="treeTip">Area = number of entries. Click to filter.</span></div>
+      </article>
+      <article class="viz-card">
+        <header><div><span class="card-label" data-i18n="distributionLabel">03 · Distributional</span><h3 data-i18n="heatTitle">Term frequency × category</h3></div></header>
+        <div id="heatmap" class="viz-body heat" aria-label="Heat map of term frequency and category"></div>
+        <div class="viz-help"><span data-i18n="heatTip">Darker cells hold more entries. Click to inspect.</span></div>
+      </article>
+      <article class="viz-card wide">
+        <header><div><span class="card-label" data-i18n="tableLabel">04 · Tabular</span><h3 data-i18n="tableTitle">Sentence pairs</h3></div><div class="table-actions"><button class="button ghost small" id="export" data-i18n="exportCsv">Export CSV</button></div></header>
+        <div class="table-wrap"><table><thead><tr><th><button class="sort" data-sort="key_term" data-i18n="thTerm">Key term</button></th><th data-i18n="thRendering">Chinese rendering</th><th data-i18n="thSource">English source</th><th data-i18n="thCategory">Category</th><th data-i18n="thChecked">Checked</th></tr></thead><tbody id="tableBody"></tbody></table></div>
+        <div class="pagination"><span id="pageInfo"></span><div><button id="prevPage" aria-label="Previous page">←</button><button id="nextPage" aria-label="Next page">→</button></div></div>
+      </article>
+    </div>
+  </section>
+  <section class="shell takeaways">
+    <div class="section-head"><div><span class="kicker" data-i18n="takeaways">What the corpus suggests</span><h2 data-i18n="takeawaysTitle">The pattern is not just grammatical.</h2></div><a class="text-link" href="report.html" data-i18n="fullAnalysis">Read the full analysis <span>↗</span></a></div>
+    <div class="takeaway-grid">
+      <article><span>01</span><h3 data-i18n="takeaway1Title">Action dominates the derivational field.</h3><p data-i18n="takeaway1Text">Words ending in <em>-tion</em> or <em>-sion</em> make up the largest share, reflecting the corpus’s selection of deverbal abstract nouns.</p></article>
+      <article><span>02</span><h3 data-i18n="takeaway2Title">One noun rarely means one verb.</h3><p data-i18n="takeaway2Text">Sixty-seven English terms have more than one Chinese rendering, showing that word-level equivalence hides contextual choice.</p></article>
+      <article><span>03</span><h3 data-i18n="takeaway3Title">Provenance remains the limit.</h3><p data-i18n="takeaway3Text">The supplied CSV lacks a documented sampling seed, so this prototype reports the gap instead of inventing methodological certainty.</p></article>
+    </div>
+  </section>
+</main>
+<footer class="footer shell"><div><strong>NV Atlas</strong><p data-i18n="footerText">A student-built translation and linguistics corpus explorer.</p></div><div class="footer-links"><a href="method.html" data-i18n="navCodebook">Codebook</a><a href="report.html#ai" data-i18n="navAI">AI use</a><a href="https://github.com/vanessalvts/nvatlas-test">GitHub ↗</a></div></footer>
+<div class="drawer" id="drawer" aria-hidden="true"><div class="drawer-backdrop" data-close></div><aside role="dialog" aria-modal="true" aria-labelledby="drawerTitle"><button class="drawer-close" data-close aria-label="Close">×</button><span class="card-label" id="drawerId"></span><h2 id="drawerTitle"></h2><div id="drawerBody"></div></aside></div>
+<script src="js/app.js"></script>
+</body>
+</html>
